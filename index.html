@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+      <div id="root"></div>
+
+  <script type="text/babel">
+  
+const App=(props)=>{
+          const [number,setNumber]=React.useState(0);
+          const increment =()=>setNumber(number+1);
+          const decrement=()=>setNumber(number-1);
+          return (
+              <div>
+                <h1 id={props.id}>{number}</h1>
+                <button id={props.id} onClick={increment}>Increment</button>
+                <button id={props.id} onClick={decrement}>Decrement</button>
+              </div>
+          );
+      };
+
+
+
+function ListItem(props) {
+  return <div style={{border:"1px solid black",width:"300px",padding:"10px",marginTop:"10px"}}>{props.value}</div>;
+}
+
+function DivList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number,i) =>
+    <ListItem key={i} value={number} />
+  );
+  return (
+    <ul>
+      {listItems}
+    </ul>
+  );
+}
+const n=[0];
+const count=()=>{
+    n[0]+=1;
+    numbers.push(<App id={n[0]}/>);
+    console.log(numbers);
+    ReactDOM.render(
+  <div><DivList numbers={numbers} /><button onClick={count} style={{marginLeft:"150px"}}>Count</button></div>,
+  document.getElementById('root')
+);
+
+    };
+const numbers = [<App id="0"/>];
+ReactDOM.render(
+  <div><DivList numbers={numbers} /><button onClick={count} style={{marginLeft:"150px"}}>Count</button></div>,
+  document.getElementById('root')
+);
+
+  </script>
+  </body>
+</html>
